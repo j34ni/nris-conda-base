@@ -45,7 +45,7 @@ To be usable on the HPCs **the Docker image has to be converted to a Singularity
 ```
 docker save octave -o octave.tar
 
-Singularity build octave.sif docker-archive://octave.tar
+singularity build octave.sif docker-archive://octave.tar
 ```
 
 
