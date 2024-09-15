@@ -1,26 +1,26 @@
 # NRIS conda-base container
 
-**Using containers to manage Conda environments provides better isolation, reproducibility, quota management, centralized maintenance, resource management, performance, and security compared to users installing Conda packages in their home, work or project directories. This makes it a preferred choice for many scientific and data analysis workflows, especially in shared or collaborative environments, typically on HPC. It is therefore recommended that NRIS users take this image as a basis to add their own Conda packages.**
+**Using containers to manage Conda environments provides better isolation, reproducibility, quota management, centralized maintenance, resource management, performance, and security compared to users installing Conda packages in their home, work or project directories. This makes it a preferred choice for many scientific and data analysis workflows, especially in shared or collaborative environments. It is therefore highly recommended that NRIS users take this image as a basis to add their own Conda packages.**
 
 This is a Dockerfile for a base Ubuntu 22.04 container with MiniConda py39_24.7.1-0 for NRIS Users to install their own Conda packages.
 
 The container comes with:
-- `libgl1` (a library that provides interfaces to OpenGL. It's essential for running applications that require OpenGL for rendering graphics)
-- `locales` (this provides localization files, which are necessary for the proper display of language-specific text and settings)
-- `micro` (a modern and intuitive terminal-based text editor. It's lightweight and very useful for editing files directly from the command line)
-- `tzdata` (provides time zone and daylight-saving time data)
-- `wget` (a command-line utility for downloading files from the web).
-- `miniconda` (installed in $EBROOTMINICONDA3)
+- `libgl1` (a library that provides interfaces to OpenGL, for rendering graphics);
+- `locales` (this provides localization files, for the proper display of language-specific text and settings);
+- `micro` (a modern and intuitive terminal-based text editor, for editing files directly from the command line);
+- `tzdata` (provides time zone and daylight-saving time data);
+- `wget` (a command-line utility, for downloading files from the web);
+- `miniconda` (installed in $EBROOTMINICONDA3).
 
 The corresponding container image was automatically built on https://quay.io and can be pulled directly.
 
-It is explained below how to add the Conda package `octave` version 9.2.0 from Conda-forge (see https://anaconda.org/conda-forge/octave).
+It is explained below how to add Conda packages, in this case `octave` version 9.2.0 from Conda-forge (see https://anaconda.org/conda-forge/octave).
 
-Warning: use *bindings* (i.e., `-v` for Docker or `--bind` for Singularity/Apptainer) to make folders from the host (here `./data`) *visible* inside the container (for instance at `/opt/uio/data`).
+For data processing users will take advantage of *bindings* (i.e., `-v` for Docker or `--bind` for Singularity/Apptainer) to make folders from the host (here `./data`) *visible* inside the container (for instance at `/opt/uio/data`).
 
 ## With Docker
 
-Pull the image, run it, install the Octave Conda package and check it works:
+Pull the image, run it, install the Octave Conda package and check that it works:
 
 ```
 docker pull quay.io/jeani/nris-conda:latest
@@ -61,9 +61,6 @@ octave-cli
 
 ```
 
-
-
-`
 
 
 
