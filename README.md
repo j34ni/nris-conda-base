@@ -62,7 +62,7 @@ From: ./nris-conda_latest.sif
      conda install -c conda-forge -y octave==9.2.0
      conda clean -afy 
 ```
-From the same directory pull the container image from Quay and build from it another one with Octave, so that can directly be used as is and/or distributed/shared. 
+From the same directory pull the container image stored on Quay and **build from it another image with Octave**, so that it can directly be used as is and/or distributed/shared. 
 
 Once inside the container activate the conda environment (`source /opt/uio/start.sh`) and check that Octave works:
 ```
