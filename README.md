@@ -40,6 +40,13 @@ For that, identify the *modified* **container-ID** using `docker ps -a` (in the 
 
 then commit the changes by typing `docker commit 09edb9154cf6 octave`, and the next time run: `docker run -it -v ./data:/opt/uio/data octave`.
 
+To be usable on the HPCs **the Docker image has to be converted to a Singularity Image File** (`.sif`) as follows:
+
+```
+docker save octave -o octave.tar
+
+Singularity build octave.sif docker-archive://octave.tar
+```
 
 
 ## With Singularity/Apptainer
@@ -55,7 +62,7 @@ From: ./nris-conda_latest.sif
      conda install -c conda-forge -y octave==9.2.0
      conda clean -afy 
 ```
-then pull the container image from Quay and build from it another one with Octave that can be used as it is and distributed/shared. 
+From the same directory pull the container image from Quay and build from it another one with Octave, so that can directly be used as is and/or distributed/shared. 
 
 Once inside the container activate the conda environment (`source /opt/uio/start.sh`) and check that Octave works:
 ```
@@ -70,6 +77,6 @@ singularity shell --bind ./data:/opt/uio/data octave920.sif
 octave-cli
 
 ```
-For comparison the Octave version 9.2.0 package installed directly with conda on the host creates **over one hundred thousand files** and takes about **6GB** of disc, whereas the Singularity/Apptainer container image with the very same Octave version 9.2.0 is **a single file** and takes about **623MB**.
+For comparison the Octave version 9.2.0 package installed directly with conda on the host creates **over one hundred thousand files** and takes about **6GB** of disc, whereas the Singularity/Apptainer container image with the very same Octave version 9.2.0 is **a single file** and occupies about **623MB**.
 
 
