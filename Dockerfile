@@ -27,7 +27,7 @@ ENV LANG=en_US.UTF-8 \
 RUN mkdir -p /nird /cluster /opt/uio/.tmp
 
 RUN echo '#!/bin/bash' > /opt/uio/start.sh && \
-    echo 'source ${EBROOTMINICONDA3}/etc/profile.d/conda.sh' >> /opt/uio/start.sh && \
+    echo '. ${EBROOTMINICONDA3}/etc/profile.d/conda.sh' >> /opt/uio/start.sh && \
     echo 'conda activate' >> /opt/uio/start.sh && \
     echo 'exec "$@"' >> /opt/uio/start.sh && \
     chmod ugo+rwx /opt/uio/start.sh

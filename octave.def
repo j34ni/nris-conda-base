@@ -1,0 +1,7 @@
+Bootstrap : localimage
+From: ./nris-conda_latest.sif
+
+%post
+     . /opt/uio/start.sh
+     conda install -c conda-forge -y octave==9.2.0
+     conda clean -afy 
