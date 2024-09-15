@@ -25,12 +25,22 @@ Pull the image, run it, install the Octave Conda package and check that it works
 ```
 docker pull quay.io/jeani/nris-conda:latest
 
-docker run -it --rm -v ./data:/opt/uio/data quay.io/jeani/nris-conda:latest
+docker run -it -v ./data:/opt/uio/data quay.io/jeani/nris-conda:latest
 
 conda install -c conda-forge -y octave==9.2.0
 
 octave-cli
 ```
+
+Notice that **to be able to reuse the modified container image** it is necessary to *commit* and save to a new image.
+
+For that, identify the *modified* **container-ID** using `docker ps -a` (in the present case `09edb9154cf6`):
+
+<img src="container-id.png" width="960" >
+
+then commit the changes by typing `docker commit 09edb9154cf6 octave`, and the next time run: `docker run -it -v ./data:/opt/uio/data octave`.
+
+
 
 ## With Singularity/Apptainer
 
@@ -45,7 +55,7 @@ From: ./nris-conda_latest.sif
      conda install -c conda-forge -y octave==9.2.0
      conda clean -afy 
 ```
-then pull the container image from Quay and build from it another one with Octave that can be used and shared with others. 
+then pull the container image from Quay and build from it another one with Octave that can be used as it is and distributed/shared. 
 
 Once inside the container activate the conda environment (`source /opt/uio/start.sh`) and check that Octave works:
 ```
