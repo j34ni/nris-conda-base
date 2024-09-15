@@ -70,11 +70,6 @@ singularity shell --bind ./data:/opt/uio/data octave920.sif
 octave-cli
 
 ```
-
-
-
-
-
-
+For comparison the Octave version 9.2.0 package installed directly with conda on the host creates **over one hundred thousand files** and takes about **6GB** of disc, whereas the Singularity/Apptainer container image with the very same Octave version 9.2.0 is **a single file** and takes about **623MB**.
 
 
